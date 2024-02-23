@@ -36,10 +36,9 @@ const Login = () => {
                             </div>
                             <div>
                                 <label className="text-base block mb-2">Password</label>
-                                <input
+                                <Input
                                     type="password"
                                     name="password"
-                                    className="rounded-2xl bg-form-bg py-[13px] px-7 w-full focus:outline-alerange focus:outline-none"
                                     placeholder="Password"
                                 />
                             </div>
