@@ -1,4 +1,5 @@
 import Input from '@/Components/TextInput';
+import InputLabel from '@/Components/InputLabel';
 
 const Login = () => {
     return (
@@ -25,18 +26,24 @@ const Login = () => {
                     <form className="w-[370px]">
                         <div className="flex flex-col gap-6">
                             <div>
-                                <label className="text-base block mb-2">
-                                    Email Address
-                                </label>
+                                <InputLabel
+                                    htmlFor="email"
+                                    value={"Email Address"}
+                                />
                                 <Input
+                                    id="email"
                                     type="email"
                                     name="email"
                                     placeholder="Email Address"
                                 />
                             </div>
                             <div>
-                                <label className="text-base block mb-2">Password</label>
+                                <InputLabel
+                                    htmlFor="password"
+                                    value={"Password"}
+                                />
                                 <Input
+                                    id="password"
                                     type="password"
                                     name="password"
                                     placeholder="Password"
