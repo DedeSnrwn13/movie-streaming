@@ -1,3 +1,5 @@
+import { Link } from "@inertiajs/react";
+
 const Sidebar = () => {
     return (
         <aside className="fixed z-50 w-[300px] h-full">
@@ -82,7 +84,10 @@ const Sidebar = () => {
                     {/* Others */}
                     <div>
                         <div className="text-gray-1 side-link mb-4">Others</div>
-                        <a href="pricing.html" className="side-link">
+                        <Link
+                            href={route("prototype.subscription-plan")}
+                            className="side-link"
+                        >
                             <svg
                                 width="24"
                                 height="24"
@@ -97,7 +102,7 @@ const Sidebar = () => {
                                 />
                             </svg>
                             Payments
-                        </a>
+                        </Link>
                         <a href="#!" className="side-link">
                             <svg
                                 width="24"
@@ -153,10 +158,7 @@ const Sidebar = () => {
                     {/* Subscription details */}
                     <div className="mt-auto pr-[30px]">
                         <div className="p-5 bg-black rounded-[25px]">
-                            <img
-                                src="/icons/ic_star-rounded.svg"
-                                alt=""
-                            />
+                            <img src="/icons/ic_star-rounded.svg" alt="" />
                             <div className="text-white text-lg font-semibold mt-4 mb-8">
                                 For Greatest
                             </div>
