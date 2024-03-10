@@ -200,7 +200,13 @@ const SubscriptionPlan = () => {
                         />
 
                         {/* For Greatest */}
-                        <SubscriptionCard isPremium />
+                        <SubscriptionCard
+                            isPremium
+                            name={"Premium"}
+                            price={510000}
+                            durationInMonth={3}
+                            features={["Feature 1", "Feature 2", "Feature 3"]}
+                        />
                     </div>
                     {/* /Pricing Card */}
                 </div>
