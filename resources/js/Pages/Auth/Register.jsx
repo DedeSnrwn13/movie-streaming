@@ -154,7 +154,7 @@ const Register = () => {
                                         Sign Up
                                     </span>
                                 </Button>
-                                <Link href={route("prototype.login")}>
+                                <Link href={route("login")}>
                                     <Button
                                         variant="light-outline"
                                         type="button"
