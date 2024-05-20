@@ -103,7 +103,12 @@ export default function Login({ status, canResetPassword }) {
                                 </div>
                             </div>
                             <div className="grid space-y-[14px] mt-[30px]">
-                                <Button type="submit" variant="primary" disabled={processing}>
+                                <Button
+                                    type="submit"
+                                    variant="primary"
+                                    disabled={processing}
+                                    processing={processing}
+                                >
                                     <span className="text-base font-semibold">
                                         Start Watching
                                     </span>
