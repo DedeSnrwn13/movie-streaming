@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react";
 import React, { useState, useRef } from "react";
 
 const Topbar = ({ name }) => {
@@ -53,12 +54,13 @@ const Topbar = ({ name }) => {
                             >
                                 Settings
                             </a>
-                            <a
-                                href="sign_in.html"
+                            <Link
+                                href={route("logout")}
+                                method="POST"
                                 className="transition-all hover:bg-sky-100 p-4"
                             >
                                 Sign Out
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
