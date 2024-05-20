@@ -4,7 +4,7 @@ import Authenticated from "@/Layouts/Authenticated/Index";
 import { Head } from "@inertiajs/react";
 import Flickity from "react-flickity-component";
 
-const Dashboard = ({ auth }) => {
+const Dashboard = ({ auth, featuredMovies, movies }) => {
     const flickityOptions = {
         cellAlign: "left",
         contain: true,
@@ -33,14 +33,14 @@ const Dashboard = ({ auth }) => {
                         className="gap-[30px] __scroll-selector"
                         options={flickityOptions}
                     >
-                        {[1, 2, 3, 4].map((i) => (
+                        {featuredMovies.map((featuredMovie) => (
                             <FeaturedMovie
-                                key={i}
-                                slug={"the-batman"}
-                                name={`The Batman ${i}`}
-                                category={"Action"}
-                                thumbnail={"https://picsum.photos/id/1/300/300"}
-                                rating={i + 1}
+                                key={featuredMovie.id}
+                                slug={featuredMovie.slug}
+                                name={featuredMovie.name}
+                                category={featuredMovie.category}
+                                thumbnail={featuredMovie.thumbnail}
+                                rating={featuredMovie.rating}
                             />
                         ))}
                     </Flickity>

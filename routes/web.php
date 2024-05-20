@@ -19,13 +19,9 @@ use Inertia\Inertia;
 
 Route::redirect('/', '/login');
 
-Route::middleware(['auth', 'role:user'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
+Route::middleware(['auth'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
-
-Route::get('/dashboard', function () {
-    return Inertia::render('User/Dashboard/Index');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix('prototype')->name('prototype.')->group(function () {
     Route::get('/login', function () {

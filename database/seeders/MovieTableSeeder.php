@@ -20,7 +20,7 @@ class MovieTableSeeder extends Seeder
                 'category' => 'Drama',
                 'video_url' => 'https://placehold.co/400',
                 'thumbnail' => 'https://placehold.co/400',
-                'rating' => 9.3,
+                'rating' => 4.3,
                 'is_featured' => true
             ],
             [
@@ -29,7 +29,7 @@ class MovieTableSeeder extends Seeder
                 'category' => 'Drama',
                 'video_url' => 'https://placehold.co/400',
                 'thumbnail' => 'https://placehold.co/400',
-                'rating' => 9.2,
+                'rating' => 4.2,
                 'is_featured' => false
             ],
             [
@@ -38,7 +38,7 @@ class MovieTableSeeder extends Seeder
                 'category' => 'Drama',
                 'video_url' => 'https://placehold.co/400',
                 'thumbnail' => 'https://placehold.co/400',
-                'rating' => 9.0,
+                'rating' => 4.0,
                 'is_featured' => false
             ]
         ];
