@@ -58,7 +58,7 @@ const Dashboard = ({ auth, featuredMovies, movies }) => {
                             <MovieCard
                                 key={movie.id}
                                 slug={movie.slug}
-                                name={movie.title}
+                                name={movie.name}
                                 category={movie.category}
                                 thumbnail={movie.thumbnail}
                             />
