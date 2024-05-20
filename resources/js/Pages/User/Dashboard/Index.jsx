@@ -54,13 +54,13 @@ const Dashboard = ({ auth, featuredMovies, movies }) => {
                         className="__scroll-selector"
                         options={flickityOptions}
                     >
-                        {[1, 2, 3, 4, 5, 6].map((i) => (
+                        {movies.map((movie) => (
                             <MovieCard
-                                key={i}
-                                slug={"the-batman"}
-                                name={`The Batman ${i}`}
-                                category={"Action"}
-                                thumbnail={"https://picsum.photos/id/1/300/300"}
+                                key={movie.id}
+                                slug={movie.slug}
+                                name={movie.title}
+                                category={movie.category}
+                                thumbnail={movie.thumbnail}
                             />
                         ))}
                     </Flickity>
