@@ -1,9 +1,17 @@
 import React from "react";
 import SubscriptionCard from "@/Components/SubscriptionCard";
 import Authenticated from "@/Layouts/Authenticated/Index";
+import { router } from "@inertiajs/react";
 
 const SubscriptionPlan = ({ auth, subscriptionPlans }) => {
-    console.log(subscriptionPlans);
+    const selectSubscription = (id) => {
+        router.post(
+            route("user.dashboard.subscriptionPlan.userSubscribe", {
+                subscriptionPlan: id,
+            })
+        );
+    };
+
     return (
         <Authenticated auth={auth}>
             <div className="mx-auto max-w-screen hidden lg:block">
@@ -34,6 +42,9 @@ const SubscriptionPlan = ({ auth, subscriptionPlans }) => {
                                         subscriptionPlan.name === "Premium"
                                     }
                                     key={subscriptionPlan.id}
+                                    onSelectSubscription={() =>
+                                        selectSubscription(subscriptionPlan.id)
+                                    }
                                 />
                             ))}
                         </div>

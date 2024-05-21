@@ -16,4 +16,9 @@ class SubscriptionPlanController extends Controller
             'subscriptionPlans' => $subscriptionPlans
         ]);
     }
+
+    public function userSubscribe(Request $request, SubscriptionPlan $subscriptionPlan)
+    {
+        return $subscriptionPlan;
+    }
 }
