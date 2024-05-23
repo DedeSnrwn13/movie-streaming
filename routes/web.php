@@ -24,10 +24,14 @@ Route::redirect('/', '/login');
 Route::middleware(['auth'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 
-    Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
+    Route::middleware('check.user.subscription:true')->group(function () {
+        Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
+    });
 
-    Route::get('/subscription-plan', [SubscriptionPlanController::class, 'index'])->name('subscriptionPlan.index');
-    Route::post('/subscription-plan/{subscriptionPlan}/user-subscrive', [SubscriptionPlanController::class, 'userSubscribe'])->name('subscriptionPlan.userSubscribe');
+    Route::middleware('check.user.subscription:false')->group(function () {
+        Route::get('/subscription-plan', [SubscriptionPlanController::class, 'index'])->name('subscriptionPlan.index');
+        Route::post('/subscription-plan/{subscriptionPlan}/user-subscrive', [SubscriptionPlanController::class, 'userSubscribe'])->name('subscriptionPlan.userSubscribe');
+    });
 });
 
 Route::prefix('prototype')->name('prototype.')->group(function () {
