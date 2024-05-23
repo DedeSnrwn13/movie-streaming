@@ -3,7 +3,7 @@ import InputLabel from "@/Components/InputLabel";
 import { Link, Head } from "@inertiajs/react";
 import Button from "@/Components/PrimaryButton";
 
-const Login = () => {
+const Register = () => {
     return (
         <>
             <Head title="Sign Up" />
@@ -96,4 +96,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
