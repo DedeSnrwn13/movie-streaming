@@ -1,14 +1,14 @@
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import Authenticated from "@/Layouts/Authenticated/Index";
-import { Head, useForm } from "@inertiajs/react";
+import { Head, useForm, router } from "@inertiajs/react";
 import React from "react";
 import Input from "@/Components/TextInput";
 import Checkbox from "@/Components/Checkbox";
 import PrimaryButton from "@/Components/PrimaryButton";
 
 export default function Edit({ auth, movie }) {
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, processing, errors } = useForm({
         ...movie,
     });
 
@@ -28,7 +28,8 @@ export default function Edit({ auth, movie }) {
             delete data.thumbnail;
         }
 
-        put(route("admin.dashboard.movie.update", movie.id), {
+        router.post(route("admin.dashboard.movie.update", movie.id), {
+            _method: "PUT",
             ...data,
         });
     };

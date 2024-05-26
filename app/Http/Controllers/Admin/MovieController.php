@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\Movie\StoreRequest;
+use App\Http\Requests\Admin\Movie\UpdateRequest;
 
 class MovieController extends Controller
 {
@@ -69,9 +70,23 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Movie $movie)
+    public function update(UpdateRequest $request, Movie $movie)
     {
-        return $request->all();
+        $data = $request->validated();
+
+        if ($request->file('thumbnail')) {
+            $data['thumbnail'] = Storage::disk('public')->put('movies', $request->file('thumbnail'));
+            Storage::disk('public')->delete($movie->thumbnail);
+        } else {
+            $data['thumbnail'] = $movie->thumbnail;
+        }
+
+        $movie->update($data);
+
+        return redirect()->route('admin.dashboard.movie.index')->with([
+            'message' => 'Movie updated successfully',
+            'type' => 'success'
+        ]);
     }
 
     /**
