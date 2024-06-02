@@ -67,4 +67,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('midtrans/notification', [SubscriptionPlanController::class, 'midtransCallback']);
+
 require __DIR__ . '/auth.php';
