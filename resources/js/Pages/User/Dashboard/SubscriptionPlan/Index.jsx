@@ -25,6 +25,8 @@ const SubscriptionPlan = ({ auth, subscriptionPlans, env }) => {
             onSuccess: function (result) {
                 console.log("success");
                 console.log({ result });
+
+                router.visit(route("user.dashboard.index"));
             },
             // Optional
             onPending: function (result) {
