@@ -1,19 +1,54 @@
 import React from "react";
 import SubscriptionCard from "@/Components/SubscriptionCard";
 import Authenticated from "@/Layouts/Authenticated/Index";
-import { router } from "@inertiajs/react";
+import { router, Head } from "@inertiajs/react";
 
-const SubscriptionPlan = ({ auth, subscriptionPlans }) => {
+const SubscriptionPlan = ({ auth, subscriptionPlans, env }) => {
     const selectSubscription = (id) => {
         router.post(
             route("user.dashboard.subscriptionPlan.userSubscribe", {
                 subscriptionPlan: id,
-            })
+            }),
+            {},
+            {
+                only: ["userSubscription"],
+                onSuccess: ({ props }) => {
+                    onSnapMidtrans(props.userSubscription);
+                },
+            }
         );
+    };
+
+    const onSnapMidtrans = (userSubscription) => {
+        snap.pay(userSubscription.snap_token, {
+            // Optional
+            onSuccess: function (result) {
+                console.log("success");
+                console.log({ result });
+
+                router.visit(route("user.dashboard.index"));
+            },
+            // Optional
+            onPending: function (result) {
+                console.log("pending");
+                console.log({ result });
+            },
+            // Optional
+            onError: function (result) {
+                console.log("error");
+                console.log({ result });
+            },
+        });
     };
 
     return (
         <Authenticated auth={auth}>
+            <Head title="Subscription Plan">
+                <script
+                    src="https://app.sandbox.midtrans.com/snap/snap.js"
+                    data-client-key={env.MIDTRANS_CLIENT_KEY}
+                ></script>
+            </Head>
             <div className="mx-auto max-w-screen hidden lg:block">
                 {/* START: Content */}
                 <div className="ml-[300px] px-[50px]">
